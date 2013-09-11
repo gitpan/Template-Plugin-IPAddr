@@ -10,20 +10,20 @@ NAME
       # ...or via new
       [% ip = IPAddr.new(prefix) %]
 
-      # methods that return the different parts of the prefix
+      # Methods that return the different parts of the prefix
       [% IPAddr.addr %]
       [% IPAddr.cidr %]
       [% IPAddr.network %]
       [% IPAddr.netmask %]
       [% IPAddr.wildcard %]
 
-      # method for retriving usable IP-adresses from a prefix
+      # Methods for retriving usable IP-adresses from a prefix
       [% IPAddr.first %]
       [% IPAddr.last %]
 
 DESCRIPTION
     This module implements an `IPAddr' class for handling IPv4 and
-    IPv6-address in an object-orientated way. The module is based on
+    IPv6-addresses in an object-orientated way. The module is based on
     NetAddr::IP and works on IPv4 as well as IPv6-addresses.
 
     You can create a `IPAddr' object via the `USE' directive, adding any
@@ -130,7 +130,7 @@ METHODS
 NOTES
     Not all methods are applicable in a IPv6 context. For example there are
     no notation of netmask or wildcard in IPv6, and the first and last
-    returns values of no use.
+    returns addresses of no/little value.
 
     When using IPv6 mapped IPv4 addresses, the "dot notation" is lost in the
     process. For example:
@@ -146,10 +146,6 @@ NOTES
 SEE ALSO
     Template, Template::Manual::Config, NetAddr::IP
 
-SOURCE CODE REPOSITORY
-    The source code for this module is held in a public git repository at
-    https://github.com/hemmop/template-plugin-ipaddr.git
-
 AUTHOR
     Per Carlson `pelle@cpan.org'
 
@@ -157,9 +153,9 @@ COPYRIGHT AND LICENSE
     Copyright 2013 Per Carlson
 
     This module is free software; you can redistribute it and/or modify it
-    under the same terms as Perl 5.10.0.
+    under the same terms as Perl 5.14.0.
 
     For more details, see the full text of the licenses at
     http://opensource.org/licenses/Artistic-2.0, and
-    http://opensource.org/licenses/GPL-2.0.
+    http://opensource.org/licenses/GPL-1.0.
 

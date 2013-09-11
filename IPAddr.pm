@@ -9,9 +9,8 @@ use Scalar::Util qw{ blessed };
 
 use overload '""' => sub { shift->cidr };
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 $VERSION = eval $VERSION;
-
 
 sub new {
   my ($class, $context, $arg) = @_;
@@ -21,7 +20,7 @@ sub new {
   # When used as [% ip = NetAddr.new(addr) %], $context contain
   # the addr.
   my $addr = blessed $context ? $arg : $context;
-  return bless {_cidr => NetAddr::IP->new($addr)}, ref $class || $class;
+  return bless { _cidr => NetAddr::IP->new($addr) }, ref $class || $class;
 }
 
 sub addr { return _compact(shift->{_cidr}) }
@@ -69,20 +68,20 @@ Template::Plugin::IPAddr - Template::Toolkit plugin handling IP-addresses
   # ...or via new
   [% ip = IPAddr.new(prefix) %]
 
-  # methods that return the different parts of the prefix
+  # Methods that return the different parts of the prefix
   [% IPAddr.addr %]
   [% IPAddr.cidr %]
   [% IPAddr.network %]
   [% IPAddr.netmask %]
   [% IPAddr.wildcard %]
 
-  # method for retriving usable IP-adresses from a prefix
+  # Methods for retriving usable IP-adresses from a prefix
   [% IPAddr.first %]
   [% IPAddr.last %]
 
 =head1 DESCRIPTION
 
-This module implements an C<IPAddr> class for handling IPv4 and IPv6-address
+This module implements an C<IPAddr> class for handling IPv4 and IPv6-addresses
 in an object-orientated way.
 The module is based on L<NetAddr::IP> and works on IPv4 as well as
 IPv6-addresses.
@@ -200,7 +199,7 @@ with all bits inverted).
 
 Not all methods are applicable in a IPv6 context. For example there
 are no notation of L<netmask> or L<wildcard> in IPv6, and the L<first>
-and L<last> returns values of no use.
+and L<last> returns addresses of no/little value.
 
 When using IPv6 mapped IPv4 addresses, the "dot notation" is lost
 in the process. For example:
@@ -219,11 +218,6 @@ L<Template>,
 L<Template::Manual::Config/PLUGINS>,
 L<NetAddr::IP>
 
-=head1 SOURCE CODE REPOSITORY
-
-The source code for this module is held in a public git repository at
-L<https://github.com/hemmop/template-plugin-ipaddr.git>
-
 =head1 AUTHOR
 
 Per Carlson C<pelle@cpan.org>
@@ -233,11 +227,11 @@ Per Carlson C<pelle@cpan.org>
 Copyright 2013 Per Carlson
 
 This module is free software; you can redistribute it and/or modify it
-under the same terms as Perl 5.10.0.
+under the same terms as Perl 5.14.0.
 
 For more details, see the full text of the licenses at
 L<http://opensource.org/licenses/Artistic-2.0>,
-and L<http://opensource.org/licenses/GPL-2.0>.
+and L<http://opensource.org/licenses/GPL-1.0>.
 
 =cut
 
